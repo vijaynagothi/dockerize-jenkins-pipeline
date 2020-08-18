@@ -12,24 +12,6 @@ pipeline {
                 git 'https://github.com/vijaynagothi/dockerize-jenkins-pipeline.git'
             }
         }
-        
-        /*stage('Build Docker image') {
-            steps{
-                echo 'Building Image from Dckerfile'
-                sh "docker build -t vijaynagothi/simplilearn-devops-certification:${env.BUILD_ID} ."
-                sh "docker images"
-            }
-        }
-        
-        stage('Puch Docker image') {
-            steps{
-                echo 'Pushing Image to DockerHub'
-                withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
-                    sh "echo ${dockerhubpwd} | docker login -u vijaynagothi --password-stdin"
-                }
-                 sh "docker push vijaynagothi/simplilearn-devops-certification:${env.BUILD_ID}"
-            }
-        }*/
         stage('Building image') {
             steps{
                 script {
@@ -53,4 +35,22 @@ pipeline {
         }
     }
 }
+
+/*stage('Build Docker image') {
+            steps{
+                echo 'Building Image from Dckerfile'
+                sh "docker build -t vijaynagothi/simplilearn-devops-certification:${env.BUILD_ID} ."
+                sh "docker images"
+            }
+        }
+        
+        stage('Puch Docker image') {
+            steps{
+                echo 'Pushing Image to DockerHub'
+                withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
+                    sh "echo ${dockerhubpwd} | docker login -u vijaynagothi --password-stdin"
+                }
+                 sh "docker push vijaynagothi/simplilearn-devops-certification:${env.BUILD_ID}"
+            }
+        }*/
 
